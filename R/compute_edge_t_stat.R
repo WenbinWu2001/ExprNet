@@ -19,9 +19,6 @@
 #' Each column is the computed edge length of an edge *"vertex1-vertex2"* for all samples (Type1 and Type2). The first column is the sample label.
 #' @export
 #'
-#' @importFrom here here
-#' @import igraph
-#'
 #' @examples
 #' network <- read_graph(here::here("demo/network_info", "network"), format = "edgelist")
 #' data_type1 <- readr::read_csv(here::here("demo/data", paste0("LGG", ".csv")))

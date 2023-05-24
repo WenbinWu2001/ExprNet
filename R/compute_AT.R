@@ -33,7 +33,7 @@
 #' @import igraph
 #'
 #' @examples
-#' network <- read_graph(here::here("demo/network_info", "network"), format = "edgelist")
+#' network <- read_graph(here::here("demo/network_info/network"), format = "edgelist")
 #' data_type1 <- readr::read_csv(here::here("demo/data", paste0("LGG", ".csv")))
 #' data_type2 <- readr::read_csv(here::here("demo/data", paste0("GBM", ".csv")))
 #' vertex_idx_selected <- c(1, 2, 3, 5, 8, 10, 11, 13, 14, 15, 16)
@@ -125,6 +125,7 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
 
     pval_AT2 <- min(mean(AT2_perm <= AT2, na.rm = TRUE), mean(AT2_perm >= AT2, na.rm = TRUE))
   }
+  cat("AT2 computed.\nAT2 = ", round(AT2, 2), ", pval_AT2 = ", round(pval_AT2, 4), "\n")
 
 
   # Plot the subnetwork

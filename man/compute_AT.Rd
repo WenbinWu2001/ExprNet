@@ -23,6 +23,10 @@ compute_AT(
 )
 }
 \arguments{
+\item{edge_t_stat}{The result from [compute_edge_t_stat()].}
+
+\item{edge_dist_mat}{The result from [compute_edge_t_stat()].}
+
 \item{network}{An \link[igraph]{igraph-package} graph object. It will be converted to an undirected graph by default.}
 
 \item{vertex_idx_selected}{A numeric vector of vertex indices that you want to include in the sub-network.}
@@ -63,7 +67,7 @@ Calculate the p-value of AT1 using the Irwin-Hall (or normal) null distribution 
 Plot and save the sub-network.
 }
 \examples{
-network <- read_graph(here::here("demo/network_info", "network"), format = "edgelist")
+network <- read_graph(here::here("demo/network_info/network"), format = "edgelist")
 data_type1 <- readr::read_csv(here::here("demo/data", paste0("LGG", ".csv")))
 data_type2 <- readr::read_csv(here::here("demo/data", paste0("GBM", ".csv")))
 vertex_idx_selected <- c(1, 2, 3, 5, 8, 10, 11, 13, 14, 15, 16)

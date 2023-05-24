@@ -9,10 +9,11 @@
 #' t_stat: t statistics of edges in the sub-network, t_stat_perc: percentiles of these t statistics among all edges in the original network;\cr
 #' AT1: Value of AT1; pval_AT1: p-value of AT1; \cr
 #' AT2: Value of AT2; pval_AT2: p-value of AT2)
+#'
 #' @export
 #'
 #' @examples
-#' network <- read_graph(here::here("demo/network_info", "network"), format = "edgelist")
+#' network <- igraph::read_graph(here::here("demo/network_info", "network"), format = "edgelist")
 #' data_type1 <- readr::read_csv(here::here("demo/data", paste0("LGG", ".csv")))
 #' data_type2 <- readr::read_csv(here::here("demo/data", paste0("GBM", ".csv")))
 #' edge_pair_selected <- c("1-5", "1-10", "5-10", "8-10", "2-11", "3-11", "4-11")
