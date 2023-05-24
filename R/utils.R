@@ -37,4 +37,3 @@ AT2_one_perm <- function(perm_idx, edge_t_stat_selected, edge_dist_mat) {
   return (AT2)
 }
 
-

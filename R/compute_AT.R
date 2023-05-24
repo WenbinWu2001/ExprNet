@@ -8,7 +8,7 @@
 #' @param edge_t_stat The result from [compute_edge_t_stat()].
 #' @param edge_dist_mat The result from [compute_edge_t_stat()].
 #' @param vertex_idx_selected A numeric vector of vertex indices that you want to include in the sub-network.
-#' @param edge_pair_selected A character vector of edges that you want to include in the sub-network, each element in the form "vertex1-vertex2" (e.g. "1-3").
+#' @param edge_pair_selected A character vector of edges that you want to include in the sub-network, each element in the form *"vertex1-vertex2"* (e.g. "1-3").
 #' @param AT2_perm_test Whether to conduct permutation test for AT2. If *FALSE*, then p-value of AT2 will be returned as NA.
 #' @param num_perm Number of permutations in the permutation test.
 #' @param num_cores Number of cores to register for parallel computing in permutation test. Should be no larger than the number of available cores on the computer.
@@ -30,13 +30,15 @@
 #' @importFrom foreach foreach "%dopar%"
 #' @importFrom parallel detectCores
 #' @importFrom doParallel registerDoParallel stopImplicitCluster
+#' @importFrom grDevices dev.off pdf
+#' @importFrom stats ecdf pnorm sd t.test
 #' @import igraph
+#'
 #'
 #' @examples
 #' network <- read_graph(here::here("demo/network_info/network"), format = "edgelist")
 #' data_type1 <- readr::read_csv(here::here("demo/data", paste0("LGG", ".csv")))
 #' data_type2 <- readr::read_csv(here::here("demo/data", paste0("GBM", ".csv")))
-#' vertex_idx_selected <- c(1, 2, 3, 5, 8, 10, 11, 13, 14, 15, 16)
 #' edge_pair_selected <- c("1-8", "1-15", "2-16", "3-16", "5-10", "5-16", "8-11", "8-13", "8-14", "8-15", "13-15")
 #' save_dir <- here::here("demo")
 #'
@@ -46,8 +48,9 @@
 #' edge_dist_mat <- res$edge_dist_mat
 #'
 #' # compute the AT's
-#' compute_AT(edge_t_stat, edge_dist_mat, network, vertex_idx_selected = vertex_idx_selected, edge_pair_selected = edge_pair_selected, save_plot = TRUE, save_dir = save_dir,
-#             subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)", vertex.label.cex = 1, vertex.size = 10, edge.width = 7)
+#' compute_AT(edge_t_stat = edge_t_stat, edge_dist_mat = edge_dist_mat, network = network, edge_pair_selected = edge_pair_selected,
+#'           save_plot = TRUE, save_dir = save_dir,
+#'           subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)", vertex.label.cex = 1, vertex.size = 10, edge.width = 7)
 
 compute_AT <- function(edge_t_stat, edge_dist_mat, network,
                        vertex_idx_selected = NULL, edge_pair_selected = NULL,

@@ -12,6 +12,7 @@ LazyData: true
 URL: https://github.com/WenbinWu2001/ExprNet
 BugReports: https://github.com/WenbinWu2001/ExprNet/issues
 RoxygenNote: 7.2.3
+Roxygen: list(markdown = TRUE)
 Imports: 
     doParallel,
     foreach,

@@ -26,19 +26,19 @@ analysis_ExprNet(
 }
 \arguments{
 \item{data_type1}{data.frame for phenotype 1. Each row corresponds to a vertex feature.
-Each column corresponds to a sample, The first column is the numeric vertex index.}
+Each column corresponds to a sample. The first column is the numeric vertex index.}
 
-\item{data_type2}{data.frame for phenotype 2, in the same format as *data_type1*.}
+\item{data_type2}{data.frame for phenotype 2, in the same format as \emph{data_type1}.}
 
 \item{network}{An \link[igraph]{igraph-package} graph object. It will be converted to an undirected graph by default.}
 
 \item{vertex_idx_selected}{A numeric vector of vertex indices that you want to include in the sub-network.}
 
-\item{edge_pair_selected}{A character vector of edges that you want to include in the sub-network, each element in the form "vertex1-vertex2" (e.g. "1-3").}
+\item{edge_pair_selected}{A character vector of edges that you want to include in the sub-network, each element in the form \emph{"vertex1-vertex2"} (e.g. "1-3").}
 
 \item{alpha_t_test}{Significance level of the t test for each edge. It does not affect the computation of AT1 and AT2.}
 
-\item{AT2_perm_test}{Whether to conduct permutation test for AT2. If *FALSE*, then p-value of AT2 will be returned as NA.}
+\item{AT2_perm_test}{Whether to conduct permutation test for AT2. If \emph{FALSE}, then p-value of AT2 will be returned as NA.}
 
 \item{num_perm}{Number of permutations in the permutation test.}
 
@@ -56,12 +56,12 @@ Each column corresponds to a sample, The first column is the numeric vertex inde
 
 \item{save_plot}{Whether to save the sub-network.}
 
-\item{save_dir}{Directory to save the results. Results are saved in a subfolder *result_ExprNet* will be created under the directory.}
+\item{save_dir}{Directory to save the results. Results are saved in a subfolder \emph{result_ExprNet} will be created under the directory.}
 
 \item{...}{Parameters for plots. For example, you may specify the size for the vertices and width for the edges.}
 }
 \value{
-The same return as [compute_AT()]. A list of the following: \cr
+The same return as \code{\link[=compute_AT]{compute_AT()}}. A list of the following: \cr
 subnet_label: label of the subnet; num_edges: number of edges in the sub-network; \cr
 vertex_idx_selected, edge_pair_selected: the sub-network selection arguments provided by you; \cr
 t_stat: t statistics of edges in the sub-network, t_stat_perc: percentiles of these t statistics among all edges in the original network;\cr
@@ -72,10 +72,10 @@ AT2: Value of AT2; pval_AT2: p-value of AT2)
 Computing and testing AT1 and AT2, and plotting sub-network
 }
 \examples{
-network <- igraph::read_graph(here::here("demo/network_info", "network"), format = "edgelist")
+network <- igraph::read_graph(here::here("demo/network_info/network"), format = "edgelist")
 data_type1 <- readr::read_csv(here::here("demo/data", paste0("LGG", ".csv")))
 data_type2 <- readr::read_csv(here::here("demo/data", paste0("GBM", ".csv")))
-edge_pair_selected <- c("1-5", "1-10", "5-10", "8-10", "2-11", "3-11", "4-11")
+edge_pair_selected <- c("1-8", "1-15", "2-16", "3-16", "5-10", "5-16", "8-11", "8-13", "8-14", "8-15", "13-15")
 
 # compute AT's
 AT_res <- analysis_ExprNet(data_type1 = data_type1, data_type2 = data_type2, network = network,

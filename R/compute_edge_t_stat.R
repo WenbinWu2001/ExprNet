@@ -3,7 +3,7 @@
 #' @description Given data for two phenotypes and a network, compute the length of each edge and conduct two-sample t tests on all edges.
 #'
 #' @param data_type1 data.frame for phenotype 1. Each row corresponds to a vertex feature.
-#' Each column corresponds to a sample, The first column is the numeric vertex index.
+#' Each column corresponds to a sample. The first column is the numeric vertex index.
 #' @param data_type2 data.frame for phenotype 2, in the same format as *data_type1*.
 #' @param network An \link[igraph]{igraph-package} graph object. It will be converted to an undirected graph by default.
 #' @param type1_name The name for phenotype 1, used for naming files of the results.
@@ -25,7 +25,7 @@
 #' data_type2 <- readr::read_csv(here::here("demo/data", paste0("GBM", ".csv")))
 #'
 #' # compute the t-statistics and percentiles
-#' res <- compute_edge_t_stat(data_type1, data_type2, network, type1_name = "LGG", type2_name = "GBM", save_dir = here::here("demo"), subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)")
+#' res <- compute_edge_t_stat(data_type1, data_type2, network, type1_name = "LGG", type2_name = "GBM", save_dir = here::here("demo"))
 #' res
 
 compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "Type1", type2_name = "Type2",

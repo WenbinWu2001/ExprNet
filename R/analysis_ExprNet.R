@@ -13,10 +13,10 @@
 #' @export
 #'
 #' @examples
-#' network <- igraph::read_graph(here::here("demo/network_info", "network"), format = "edgelist")
+#' network <- igraph::read_graph(here::here("demo/network_info/network"), format = "edgelist")
 #' data_type1 <- readr::read_csv(here::here("demo/data", paste0("LGG", ".csv")))
 #' data_type2 <- readr::read_csv(here::here("demo/data", paste0("GBM", ".csv")))
-#' edge_pair_selected <- c("1-5", "1-10", "5-10", "8-10", "2-11", "3-11", "4-11")
+#' edge_pair_selected <- c("1-8", "1-15", "2-16", "3-16", "5-10", "5-16", "8-11", "8-13", "8-14", "8-15", "13-15")
 #'
 #' # compute AT's
 #' AT_res <- analysis_ExprNet(data_type1 = data_type1, data_type2 = data_type2, network = network,

@@ -17,9 +17,9 @@ compute_edge_t_stat(
 }
 \arguments{
 \item{data_type1}{data.frame for phenotype 1. Each row corresponds to a vertex feature.
-Each column corresponds to a sample, The first column is the numeric vertex index.}
+Each column corresponds to a sample. The first column is the numeric vertex index.}
 
-\item{data_type2}{data.frame for phenotype 2, in the same format as *data_type1*.}
+\item{data_type2}{data.frame for phenotype 2, in the same format as \emph{data_type1}.}
 
 \item{network}{An \link[igraph]{igraph-package} graph object. It will be converted to an undirected graph by default.}
 
@@ -31,14 +31,14 @@ Each column corresponds to a sample, The first column is the numeric vertex inde
 
 \item{save_edge_res}{Logical. Should the results be saved?}
 
-\item{save_dir}{Directory to save the results. Results are saved in a subfolder *result_ExprNet* will be created under the directory.}
+\item{save_dir}{Directory to save the results. Results are saved in a subfolder \emph{result_ExprNet} will be created under the directory.}
 }
 \value{
-A list consisting of *edge_t_stat* and *edge_dist_mat*.
-*edge_t_stat* is a data.frame storing results of the t test.
+A list consisting of \emph{edge_t_stat} and \emph{edge_dist_mat}.
+\emph{edge_t_stat} is a data.frame storing results of the t test.
 Each row gives the following properties of an edge: Vertex1(V1), Vertex2(V2), (mean, sd) of each type, difference in means, t statistic, p-value, percentile of the t statistic.
-*edge_dist_mat* is a matrix containing all the sample distances of each edge.
-Each column is the computed edge length of an edge *"vertex1-vertex2"* for all samples (Type1 and Type2). The first column is the sample label.
+\emph{edge_dist_mat} is a matrix containing all the sample distances of each edge.
+Each column is the computed edge length of an edge \emph{"vertex1-vertex2"} for all samples (Type1 and Type2). The first column is the sample label.
 }
 \description{
 Given data for two phenotypes and a network, compute the length of each edge and conduct two-sample t tests on all edges.
@@ -49,6 +49,6 @@ data_type1 <- readr::read_csv(here::here("demo/data", paste0("LGG", ".csv")))
 data_type2 <- readr::read_csv(here::here("demo/data", paste0("GBM", ".csv")))
 
 # compute the t-statistics and percentiles
-res <- compute_edge_t_stat(data_type1, data_type2, network, type1_name = "LGG", type2_name = "GBM", save_dir = here::here("demo"), subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)")
+res <- compute_edge_t_stat(data_type1, data_type2, network, type1_name = "LGG", type2_name = "GBM", save_dir = here::here("demo"))
 res
 }
