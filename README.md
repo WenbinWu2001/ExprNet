@@ -41,9 +41,9 @@ The overall procedure breaks into four steps:
     heteroscedasticity) on each of the n edges. Denote the obtained t
     statistics as $\{t_1, t_2, ..., t_n\}$. Obtain the percentiles
     $\{p_1, p_2, ..., p_n\}$ of these t statistics by
-    $$p_k := \frac{\sum_{l=1}^{n} \mathbb{I}\{t_l \leq t_k\} }{n}$$
-    where is the indicator function. In other words, $p_k$ is the
-    proportion of t statistics that are less than or equal to $t_k$.
+    $$p_k := \frac{\sum_{l=1}^{n} \mathbb{I}(t_l \leq t_k) }{n}$$ where
+    is the indicator function. In other words, $p_k$ is the proportion
+    of t statistics that are less than or equal to $t_k$.
 
 3.  Suppose the user-specified sub-network consists of $m$ edges.
     Extract the percentiles of these edges from
@@ -52,18 +52,19 @@ The overall procedure breaks into four steps:
 
 4.  Compute the following statistics ($AT1$ standing for , $AT2$
     standing for ): $$
-    \begin{align*}
-         AT1 &:= 1 - \frac{1}{m}\sum_{k=1}^m p'_k \\
-         AT2 &:= \frac{1}{m}\sum_{k=1}^m \left| p'_k - 0.5 \right| 
-    \end{align*}
-    $$ \### Hypothesis testing Test
-    $H_0: \textit{all interactions in the sub-network (namely all selected edges) express randomly between phenotype A and B}$.
-    Under the assumptions that
-    $t_1, t_2, ..., t_n \stackrel{i.i.d}{\sim} N(0, 1)$ and $n$ is
-    sufficiently large, $m(1-AT1) \sim Irwin-Hall(m)$, where
-    $Irwin-Hall(m)$ is the distribution of sum of $m$
-    i.i.d.$\ Unif(0,1)$ random variables. This null distribution is used
-    to obtain the p-value of $AT1$.
+    AT1 &:= 1 - \frac{1}{m}\sum_{k=1}^m p'_k \\
+    AT2 &:= \frac{1}{m}\sum_{k=1}^m \left| p'_k - 0.5 \right| 
+    $$
+
+### Hypothesis testing
+
+Test
+$H_0: \textit{all interactions in the sub-network (namely all selected edges) express randomly between phenotype A and B}$.
+Under the assumptions that
+$t_1, t_2, ..., t_n \stackrel{i.i.d}{\sim} N(0, 1)$ and $n$ is
+sufficiently large, $m(1-AT1) \sim Irwin-Hall(m)$, where $Irwin-Hall(m)$
+is the distribution of sum of $m$ i.i.d.$\ Unif(0,1)$ random variables.
+This null distribution is used to obtain the p-value of $AT1$.
 
 The p-value of $AT2$ is obtained via permutation test. The sample label
 is permuted and the resulting $AT2$ is computed. Since a large number of
