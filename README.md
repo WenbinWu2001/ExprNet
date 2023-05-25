@@ -50,8 +50,8 @@ The overall procedure breaks into four steps:
     $\{p_1, p_2, ..., p_n\}$. Denote the extracted percentiles as
     $\{p'_1, p'_2, ..., p'_m\}$.
 
-4.  Compute the following statistics ($AT1$ standing for *Area of Type
-    I*, $AT2$ standing for *Area of Type II*):
+4.  Compute the following statistics ($AT1$ stands for *Area of Type I*,
+    $AT2$ stands for *Area of Type II*):
     $$AT1 := 1 - \frac{1}{m}\sum_{k=1}^m p'_k$$
     $$AT2 := \frac{1}{m}\sum_{k=1}^m |p'_k - 0.5|$$
 
