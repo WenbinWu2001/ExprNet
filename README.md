@@ -50,9 +50,8 @@ The overall procedure breaks into four steps:
     and denote them as $\{p'_1, p'_2, ..., p'_m\}$.
 
 4.  Compute the following statistics ($AT1$ stands for *Area of Type I*,
-    $AT2$ stands for *Area of Type II*):
-    $AT1 := 1 - \frac{1}{m}\sum_{k=1}^m p'_k$,
-    $AT2 := \frac{1}{m}\sum_{k=1}^m |p'_k - 0.5|$.
+    $AT2$ stands for *Area of Type II*)
+    $$AT1 := 1 - \frac{1}{m} \sum_{k=1}^m p'_k \\ AT2 := \frac{1}{m} \sum_{k=1}^m |p'_k - 0.5|$$
 
 ### Hypothesis testing
 
