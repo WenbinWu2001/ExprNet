@@ -23,7 +23,7 @@ on the network between these vertices will be included.
 ### Algorithm
 
 Consider two phenotypes A and B. Denote $V_i^X$ as the expression value
-of vertex i in phenotype $X$, where $X \in \{A, B\}$. Let
+of vertex $i$ in phenotype $X$, where $X \in \{A, B\}$. Let
 $E_{ij}^X := V_i^X - V_j^X$ be the difference in the expression values
 of $V_i$ and $V_j$ in phenotype $X$, given that $\textit{Vertex}\ i$ and
 $\textit{Vertex}\ j$ are connected on the network. Let $n$ be the total
@@ -52,8 +52,8 @@ The overall procedure breaks into four steps:
 
 4.  Compute the following statistics ($AT1$ standing for *Area of Type
     I*, $AT2$ standing for *Area of Type II*):
-    $$AT1 := 1 - \frac{1}{m}\sum_{k=1}^m p'_k $$
-    $$AT2 := \frac{1}{m}\sum_{k=1}^m \left| p'_k - 0.5 \right| $$
+    $$AT1 := 1 - \frac{1}{m}\sum_{k=1}^m p'_k \\ 
+    AT2 := \frac{1}{m}\sum_{k=1}^m \left| p'_k - 0.5 \right|$$
 
 ### Hypothesis testing
 
