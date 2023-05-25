@@ -41,7 +41,7 @@ The overall procedure breaks into four steps:
     heteroscedasticity) on each of the n edges. Denote the obtained t
     statistics as $\{t_1, t_2, ..., t_n\}$. Obtain the percentiles
     $\{p_1, p_2, ..., p_n\}$ of these t statistics by
-    $$p_k := \frac{\sum_{l=1}^{n} \mathbb{I}(t_l \leq t_k) }{n}$$ where
+    $$p_k := \frac{1}{n} \sum_{l=1}^{n} \mathbb{I}(t_l \leq t_k)$$ where
     $\mathbb{I}$ is the indicator function. In other words, $p_k$ is the
     proportion of t statistics that are less than or equal to $t_k$.
 

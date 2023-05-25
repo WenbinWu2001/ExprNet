@@ -31,7 +31,7 @@ The overall procedure breaks into four steps:
 1. Compute $E_{ij}^A$ and $E_{ij}^B$ for all connected edges on the network using samples of phenotypes $A$ and $B$ respectively.
 
 2. Conduct two-sample Welch's t-test (t-test on sample means assuming heteroscedasticity) on each of the n edges. Denote the obtained t statistics as $\{t_1, t_2, ..., t_n\}$. Obtain the percentiles $\{p_1, p_2, ..., p_n\}$ of these t statistics by 
-$$p_k := \frac{\sum_{l=1}^{n} \mathbb{I}(t_l \leq t_k) }{n}$$
+$$p_k := \frac{1}{n} \sum_{l=1}^{n} \mathbb{I}(t_l \leq t_k)$$
 where $\mathbb{I}$ is the indicator function. In other words, $p_k$ is the proportion of t statistics that are less than or equal to $t_k$.
 
 3. Suppose the user-specified sub-network consists of $m$ edges. Extract the percentiles of these edges from $\{p_1, p_2, ..., p_n\}$. Denote the extracted percentiles as $\{p'_1, p'_2, ..., p'_m\}$. 
