@@ -51,7 +51,7 @@ The overall procedure breaks into four steps:
 
 4.  Compute the following statistics ($AT1$ stands for *Area of Type I*,
     $AT2$ stands for *Area of Type II*)
-    $$AT1 := 1 - \frac{1}{m} \sum_{k=1}^m p'_k$$
+    $$AT2 := \frac{1}{m} \sum_{k=1}^m |p'_k - 0.5|$$
 
 ### Hypothesis testing
 
