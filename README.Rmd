@@ -37,7 +37,7 @@ where $\mathbb{I}$ is the indicator function. In other words, $p_k$ is the propo
 3. Suppose the user-specified sub-network consists of $m$ edges. Extract the percentiles of these edges from $\{p_1, p_2, ..., p_n\}$ and denote them as $\{p'_1, p'_2, ..., p'_m\}$. 
     
 4. Compute the following statistics ($AT1$ stands for *Area of Type I*, $AT2$ stands for *Area of Type II*)
-$$AT2 := \frac{1}{m} \sum_{k=1}^m |p'_k - 0.5|$$
+$$AT1 := 1 - \frac{1}{m} \sum_{k=1}^m p'_k$$ and $$AT2 := \frac{1}{m} \sum_{k=1}^m |p'_k - 0.5|$$
 
 ### Hypothesis testing
 Test $H_0$: *all interactions in the sub-network (namely all selected edges) express randomly between phenotype A and B*. Under the assumptions that $t_1, t_2, ..., t_n \stackrel{i.i.d}{\sim} N(0, 1)$ and $n$ is sufficiently large, $m(1-AT1) \sim Irwin-Hall(m)$, where $Irwin-Hall(m)$ is the distribution of sum of $m$ i.i.d. $Unif(0,1)$ random variables. This null distribution is used to obtain the p-value of $AT1$.
