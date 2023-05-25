@@ -36,8 +36,7 @@ where $\mathbb{I}$ is the indicator function. In other words, $p_k$ is the propo
 
 3. Suppose the user-specified sub-network consists of $m$ edges. Extract the percentiles of these edges from $\{p_1, p_2, ..., p_n\}$. Denote the extracted percentiles as $\{p'_1, p'_2, ..., p'_m\}$. 
     
-4. Compute the following statistics ($AT1$ stands for *Area of Type I*, 
-$AT2$ stands for *Area of Type II*):
+4. Compute the following statistics ($AT1$ stands for *Area of Type I*, $AT2$ stands for *Area of Type II*):
 $$AT1 := 1 - \frac{1}{m}\sum_{k=1}^m p'_k$$
 $$AT2 := \frac{1}{m}\sum_{k=1}^m |p'_k - 0.5|$$
 
