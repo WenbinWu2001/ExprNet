@@ -9,8 +9,8 @@
 ExprNet is a toy model studying expressions of selected edges (namely a
 sub-network) on a network. We aim to characterize how the lengths of
 selected edges vary between two phenotypes based on t tests results. Two
-statistics, AT1 and AT2, are computed to summarize the t tests results
-and distinguish the differentially expressed patterns of the
+statistics, $AT1$ and $AT2$, are computed to summarize the t tests
+results and distinguish the differentially expressed patterns of the
 sub-network.
 
 ## Method

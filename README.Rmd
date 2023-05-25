@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-ExprNet is a toy model studying expressions of selected edges (namely a sub-network) on a network. We aim to characterize how the lengths of selected edges vary between two phenotypes based on t tests results. Two statistics, AT1 and AT2, are computed to summarize the t tests results and distinguish the differentially expressed patterns of the sub-network.
+ExprNet is a toy model studying expressions of selected edges (namely a sub-network) on a network. We aim to characterize how the lengths of selected edges vary between two phenotypes based on t tests results. Two statistics, $AT1$ and $AT2$, are computed to summarize the t tests results and distinguish the differentially expressed patterns of the sub-network.
 
 ## Method
 The input includes data for each phenotype and the network. The user also needs to select the sub-network either by specifying edges to be included or specifying a list of vertices. In the latter case, all edges on the network between these vertices will be included.
