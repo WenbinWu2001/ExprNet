@@ -23,7 +23,7 @@ on the network between these vertices will be included.
 ### Algorithm
 
 Consider two phenotypes A and B. Denote $V_i^X$ as the expression value
-of vertex i in phenotype X, where $X \in \{A, B\}$. Let
+of vertex i in phenotype $X$, where $X \in \{A, B\}$. Let
 $E_{ij}^X := V_i^X - V_j^X$ be the difference in the expression values
 of $V_i$ and $V_j$ in phenotype $X$, given that $\textit{Vertex}\ i$ and
 $\textit{Vertex}\ j$ are connected on the network. Let $n$ be the total
@@ -42,29 +42,28 @@ The overall procedure breaks into four steps:
     statistics as $\{t_1, t_2, ..., t_n\}$. Obtain the percentiles
     $\{p_1, p_2, ..., p_n\}$ of these t statistics by
     $$p_k := \frac{\sum_{l=1}^{n} \mathbb{I}(t_l \leq t_k) }{n}$$ where
-    is the indicator function. In other words, $p_k$ is the proportion
-    of t statistics that are less than or equal to $t_k$.
+    $\mathbb{I}$ is the indicator function. In other words, $p_k$ is the
+    proportion of t statistics that are less than or equal to $t_k$.
 
 3.  Suppose the user-specified sub-network consists of $m$ edges.
     Extract the percentiles of these edges from
     $\{p_1, p_2, ..., p_n\}$. Denote the extracted percentiles as
     $\{p'_1, p'_2, ..., p'_m\}$.
 
-4.  Compute the following statistics ($AT1$ standing for , $AT2$
-    standing for ): $$
-    AT1 &:= 1 - \frac{1}{m}\sum_{k=1}^m p'_k \\
-    AT2 &:= \frac{1}{m}\sum_{k=1}^m \left| p'_k - 0.5 \right| 
-    $$
+4.  Compute the following statistics ($AT1$ standing for *Area of Type
+    I*, $AT2$ standing for *Area of Type II*):
+    $$AT1 := 1 - \frac{1}{m}\sum_{k=1}^m p'_k $$
+    $$AT2 := \frac{1}{m}\sum_{k=1}^m \left| p'_k - 0.5 \right| $$
 
 ### Hypothesis testing
 
-Test
-$H_0: \textit{all interactions in the sub-network (namely all selected edges) express randomly between phenotype A and B}$.
-Under the assumptions that
-$t_1, t_2, ..., t_n \stackrel{i.i.d}{\sim} N(0, 1)$ and $n$ is
-sufficiently large, $m(1-AT1) \sim Irwin-Hall(m)$, where $Irwin-Hall(m)$
-is the distribution of sum of $m$ i.i.d.$\ Unif(0,1)$ random variables.
-This null distribution is used to obtain the p-value of $AT1$.
+Test $H_0$: *all interactions in the sub-network (namely all selected
+edges) express randomly between phenotype A and B*. Under the
+assumptions that $t_1, t_2, ..., t_n \stackrel{i.i.d}{\sim} N(0, 1)$ and
+$n$ is sufficiently large, $m(1-AT1) \sim Irwin-Hall(m)$, where
+$Irwin-Hall(m)$ is the distribution of sum of $m$ i.i.d. $Unif(0,1)$
+random variables. This null distribution is used to obtain the p-value
+of $AT1$.
 
 The p-value of $AT2$ is obtained via permutation test. The sample label
 is permuted and the resulting $AT2$ is computed. Since a large number of
