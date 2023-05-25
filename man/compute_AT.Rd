@@ -29,7 +29,7 @@ compute_AT(
 
 \item{network}{An \link[igraph]{igraph-package} graph object. It will be converted to an undirected graph by default.}
 
-\item{vertex_idx_selected}{A numeric vector of vertex indices that you want to include in the sub-network.}
+\item{vertex_idx_selected}{A numeric vector of vertex indices that you want to include in the sub-network. All edges on the network between these vertices will be included.}
 
 \item{edge_pair_selected}{A character vector of edges that you want to include in the sub-network, each element in the form \emph{"vertex1-vertex2"} (e.g. "1-3").}
 
@@ -65,6 +65,7 @@ AT2: Value of AT2; pval_AT2: p-value of AT2)
 Given the results from \code{\link[=compute_edge_t_stat]{compute_edge_t_stat()}}, compute AT1 and AT2.
 Calculate the p-value of AT1 using the Irwin-Hall (or normal) null distribution and the p-value of AT2 using permutation test.
 Plot and save the sub-network.
+A red edge indicates that the t statistic of this edge is larger than 0, i.e. mean of its length is larger in phenotype 1 than in phenotype 2. A blue edge indicates the opposite.
 }
 \examples{
 network <- read_graph(here::here("demo/network_info/network"), format = "edgelist")

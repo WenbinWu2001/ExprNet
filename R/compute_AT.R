@@ -3,11 +3,12 @@
 #' @description Given the results from [compute_edge_t_stat()], compute AT1 and AT2.
 #' Calculate the p-value of AT1 using the Irwin-Hall (or normal) null distribution and the p-value of AT2 using permutation test.
 #' Plot and save the sub-network.
+#' A red edge indicates that the t statistic of this edge is larger than 0, i.e. mean of its length is larger in phenotype 1 than in phenotype 2. A blue edge indicates the opposite.
 #'
 #' @inheritParams compute_edge_t_stat
 #' @param edge_t_stat The result from [compute_edge_t_stat()].
 #' @param edge_dist_mat The result from [compute_edge_t_stat()].
-#' @param vertex_idx_selected A numeric vector of vertex indices that you want to include in the sub-network.
+#' @param vertex_idx_selected A numeric vector of vertex indices that you want to include in the sub-network. All edges on the network between these vertices will be included.
 #' @param edge_pair_selected A character vector of edges that you want to include in the sub-network, each element in the form *"vertex1-vertex2"* (e.g. "1-3").
 #' @param AT2_perm_test Whether to conduct permutation test for AT2. If *FALSE*, then p-value of AT2 will be returned as NA.
 #' @param num_perm Number of permutations in the permutation test.
@@ -100,7 +101,7 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
   } else {
     cdf <- pnorm(num_edges*(1-AT1), mean = num_edges/2, sd = sqrt(num_edges/12))  # if num_edges is large, approximated by N(num_edges/2, num_edges/12)
   }
-  pval_AT1 <- min(cdf, 1-cdf)  # p-value is either the probability of the left tail or the right tail
+  pval_AT1 <- 2*min(cdf, 1-cdf)
   cat("AT1 computed.\nAT1 = ", round(AT1, 2), ", pval_AT1 = ", round(pval_AT1, 4), "\n")
 
   ### Compute AT2 ###

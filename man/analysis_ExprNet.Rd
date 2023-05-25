@@ -32,7 +32,7 @@ Each column corresponds to a sample. The first column is the numeric vertex inde
 
 \item{network}{An \link[igraph]{igraph-package} graph object. It will be converted to an undirected graph by default.}
 
-\item{vertex_idx_selected}{A numeric vector of vertex indices that you want to include in the sub-network.}
+\item{vertex_idx_selected}{A numeric vector of vertex indices that you want to include in the sub-network. All edges on the network between these vertices will be included.}
 
 \item{edge_pair_selected}{A character vector of edges that you want to include in the sub-network, each element in the form \emph{"vertex1-vertex2"} (e.g. "1-3").}
 
