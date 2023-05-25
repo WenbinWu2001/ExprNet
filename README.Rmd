@@ -34,10 +34,10 @@ The overall procedure breaks into four steps:
 $$p_k := \frac{1}{n} \sum_{l=1}^{n} \mathbb{I}(t_l \leq t_k)$$
 where $\mathbb{I}$ is the indicator function. In other words, $p_k$ is the proportion of t statistics that are less than or equal to $t_k$.
 
-3. Suppose the user-specified sub-network consists of $m$ edges. Extract the percentiles of these edges from $\{p_1, p_2, ..., p_n\}$. Denote the extracted percentiles as $\{p'_1, p'_2, ..., p'_m\}$. 
+3. Suppose the user-specified sub-network consists of $m$ edges. Extract the percentiles of these edges from $\{p_1, p_2, ..., p_n\}$ and denote them as $\{p'_1, p'_2, ..., p'_m\}$. 
     
-4. Compute the following statistics ($AT1$ stands for *Area of Type I*, $AT2$ stands for *Area of Type II*):
-$$AT1 := 1 - \frac{1}{m}\sum_{k=1}^m p'_k$$
+4. Compute the following statistics ($AT1$ stands for *Area of Type I*, $AT2$ stands for *Area of Type II*): \\
+$$AT1 := 1 - \frac{1}{m}\sum_{k=1}^m p'_k\\$$
 $$AT2 := \frac{1}{m}\sum_{k=1}^m |p'_k - 0.5|$$
 
 ### Hypothesis testing

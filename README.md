@@ -46,9 +46,8 @@ The overall procedure breaks into four steps:
     proportion of t statistics that are less than or equal to $t_k$.
 
 3.  Suppose the user-specified sub-network consists of $m$ edges.
-    Extract the percentiles of these edges from
-    $\{p_1, p_2, ..., p_n\}$. Denote the extracted percentiles as
-    $\{p'_1, p'_2, ..., p'_m\}$.
+    Extract the percentiles of these edges from $\{p_1, p_2, ..., p_n\}$
+    and denote them as $\{p'_1, p'_2, ..., p'_m\}$.
 
 4.  Compute the following statistics ($AT1$ stands for *Area of Type I*,
     $AT2$ stands for *Area of Type II*): \\
