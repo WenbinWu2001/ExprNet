@@ -9,6 +9,8 @@
 #' Irwin-Hall Distribution. (n.d.). Randomservices.org. Retrieved May 8, 2023, from https://www.randomservices.org/random/special/IrwinHall.html
 #' @examples
 #' pirwin.hall(1, 2)
+#' pirwin.hall(2.5, 4)
+
 pirwin.hall <- function(x, n) {
   k = 0:n
   return ( 1/2 + 1/(2*factorial(n)) * sum( (-1)^k * choose(n, k) * sign(x-k) * (x-k)^n ) )

@@ -26,7 +26,7 @@ analysis_ExprNet(
 }
 \arguments{
 \item{data_type1}{data.frame for phenotype 1. Each row corresponds to a vertex feature.
-Each column corresponds to a sample. The first column is the numeric vertex index.}
+Each column corresponds to a sample. The first column are the numeric vertex indices.}
 
 \item{data_type2}{data.frame for phenotype 2, in the same format as \emph{data_type1}.}
 

@@ -3,7 +3,7 @@
 #' @description Given data for two phenotypes and a network, compute the length of each edge and conduct two-sample t tests on all edges.
 #'
 #' @param data_type1 data.frame for phenotype 1. Each row corresponds to a vertex feature.
-#' Each column corresponds to a sample. The first column is the numeric vertex index.
+#' Each column corresponds to a sample. The first column are the numeric vertex indices.
 #' @param data_type2 data.frame for phenotype 2, in the same format as *data_type1*.
 #' @param network An \link[igraph]{igraph-package} graph object. It will be converted to an undirected graph by default.
 #' @param type1_name The name for phenotype 1, used for naming files of the results.

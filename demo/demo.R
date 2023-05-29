@@ -36,4 +36,3 @@ analysis_ExprNet(data_type1, data_type2, network,
 # compute_AT(edge_t_stat, edge_dist_mat, network, vertex_idx_selected = vertex_idx_selected, save_dir = here::here("demo"))  # select with vertex indices
 # compute_AT(edge_t_stat, edge_dist_mat, network, edge_pair_selected = edge_pair_selected, save_plot = TRUE, save_dir = here::here("demo"),
 #            subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)", vertex.label.cex = 1, vertex.size = 10, edge.width = 7)  # select with edge pairs
-#

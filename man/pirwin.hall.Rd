@@ -19,6 +19,7 @@ Computes the distribution function of Irwin-Hall with parameter n.
 }
 \examples{
 pirwin.hall(1, 2)
+pirwin.hall(2.5, 4)
 }
 \references{
 Irwin-Hall Distribution. (n.d.). Randomservices.org. Retrieved May 8, 2023, from https://www.randomservices.org/random/special/IrwinHall.html
