@@ -154,7 +154,7 @@ analysis_ExprNet(data_type1, data_type2, network,
                  vertex.label.cex = 1, vertex.size = 15, edge.width = 4)
 #> 
 #> Data read successfully.
-#> 17features
+#> 17 features
 #> 5 samples for phenotype 1
 #> 5 samples for phenotype 2.
 #> Graph imported successfully.
@@ -169,18 +169,18 @@ analysis_ExprNet(data_type1, data_type2, network,
 #> Among 17 edge distances, 
 #> 4 of them have significant differences at 0.05 level.
 #> 5 of them > 0.
-#> 5 of them < 0.
-#> ---Completed---
+#> 12 of them < 0.
 #> 
 #> ---Saving results---
 #> Please find results in the subfolder result_ExprNet
-#> ---Completed---
+#> 
 #> The subnetwork consists of  11  edges.
-#> AT1 computed.
+#> 
+#> ---Computing AT1---
 #> AT1 =  0.67 , pval_AT1 =  0.0529 
 #> 
-#> ---Permutation test for AT2---
-#> The process may take some time, especially for high dimension. Please stay tuned.
+#> ---Computing AT2---
+#> The permutation test may take some time, especially for high dimension. Please stay tuned.
 #> Parallel Computing:  8  cores registered.
 #> AT2 computed.
 #> AT2 =  0.47 , pval_AT2 =  0

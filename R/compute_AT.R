@@ -84,14 +84,15 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
   edge_t_stat_selected <- edge_t_stat[row_selector, c("V1", "V2", "t_stat", "t_stat_perc")]  # select edges b/w ONLY selected genes
 
   num_edges <- nrow(edge_t_stat_selected)
-  cat("The subnetwork consists of ", num_edges, " edges.\n")
+  cat("\nThe subnetwork consists of ", num_edges, " edges.\n")
 
 
   ### Compute AT1 ###
+  cat("\n---Computing AT1---\n")
   AT1 <- ifelse(num_edges >= 1, 1 - mean(edge_t_stat_selected$t_stat_perc), NA)
   # if (is.na(AT1) | (num_edges < 4)) return (NULL)  # not sufficient edges
   if (is.na(AT1)) {
-    warnings("AT1 is NA. Please check selection of edges.")
+    warnings("AT1 is NA. Please check selection of edges.\n")
     return (NULL)
   }
 
@@ -102,20 +103,20 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
     cdf <- pnorm(num_edges*(1-AT1), mean = num_edges/2, sd = sqrt(num_edges/12))  # if num_edges is large, approximated by N(num_edges/2, num_edges/12)
   }
   pval_AT1 <- 2*min(cdf, 1-cdf)
-  cat("AT1 computed.\nAT1 = ", round(AT1, 2), ", pval_AT1 = ", round(pval_AT1, 4), "\n")
+  cat("AT1 = ", round(AT1, 2), ", pval_AT1 = ", round(pval_AT1, 4), "\n")
 
   ### Compute AT2 ###
+  cat("\n---Computing AT2---\n")
   AT2 <- ifelse(num_edges >= 1, mean(abs(edge_t_stat_selected$t_stat_perc - 0.5)), NA)
   if (is.na(AT2)) {
-    warnings("AT2 is NA. Please check selection of edges.")
+    warnings("AT2 is NA. Please check selection of edges.\n")
     return (NULL)
   }
 
   # Compute p-value for AT2 (Permutation test)
   pval_AT2 <- NA
   if (AT2_perm_test == TRUE) {  # permutation test for AT2
-    cat("\n---Permutation test for AT2---\n")
-    cat("The process may take some time, especially for high dimension. Please stay tuned.\n")
+    cat("The permutation test may take some time, especially for high dimension. Please stay tuned.\n")
 
     num_cores <- ifelse(num_cores <= parallel::detectCores(), num_cores, parallel::detectCores())
     doParallel::registerDoParallel(num_cores)  # parallel computing

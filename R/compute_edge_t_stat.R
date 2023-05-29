@@ -40,7 +40,7 @@ compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "T
   num_type1 <- dim(data_type1[,-1])[2]  # number of type 1 samples (The first column is vertex index)
   num_type2 <- dim(data_type2[,-1])[2]  # number of type 2 samples (The first column is vertex index)
   cat(paste0("\nData read successfully.\n",
-             dim(data_type1[,-1])[1], "features\n",
+             dim(data_type1[,-1])[1], " features\n",
              num_type1, " samples for phenotype 1\n",
              num_type2, " samples for phenotype 2.\n"))
   sample_label <- c(rep(1, num_type1), rep(2, num_type2))  # the true sample label (1 for type1, 2 for type2), corresponding to rows in edge_dist_mat
@@ -97,8 +97,7 @@ compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "T
   cat(paste0("Among ", nrow(edge_list), " edge distances, \n",
                sum(edge_t_stat$p_value < alpha_t_test), " of them have significant differences at ", alpha_t_test, " level.\n",
                sum(edge_t_stat$diff_in_means > 0), " of them > 0.\n",
-               sum(edge_t_stat$diff_in_means > 0), " of them < 0.\n"))
-  cat("---Completed---\n")
+               sum(edge_t_stat$diff_in_means < 0), " of them < 0.\n"))
 
   # save results
   if (save_edge_res == TRUE) {
@@ -113,7 +112,6 @@ compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "T
     dir.create(path)  # create a subfolder result_ExprNet to save results
     save(edge_dist_mat, file = paste0(path, type1_name, "_", type2_name, "_edge_distances.Rdata"))
     save(edge_t_stat, file = paste0(path, type1_name, "_", type2_name, "_edge_t_stat.Rdata"))
-    cat("---Completed---\n")
   }
 
   return (list(edge_t_stat = edge_t_stat, edge_dist_mat = edge_dist_mat))
