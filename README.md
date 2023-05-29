@@ -85,10 +85,9 @@ devtools::install_github("WenbinWu2001/ExprNet")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-Suppose we want to characterize the differential expression behavior of
-a biological process <GO:0006306> *DNA_methylation* between two cancers,
+This is an example where we study gene expression profile on a network.
+We want to characterize the differential expression behavior of a
+biological process <GO:0006306> *DNA_methylation* between two cancers,
 LGG and GBM, on an example gene regulatory network.
 
 Now we import the example network and plot it. Each vertex stands for a
