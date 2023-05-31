@@ -1,7 +1,7 @@
 Package: ExprNet
 Type: Package
 Title: Characterizing differential expression of selected edges on a network
-Version: 0.1.0
+Version: 1.0.0
 Author: Wenbin Wu, Leqi Tian
 Maintainer: Wenbin Wu <drk999@gmail.com>
 Description: ExprNet is a toy model studying expressions of selected edges (namely a sub-network) on a network. We aim to characterize how the lengths of selected edges vary between two phenotypes based on t tests results. Two statistics, AT1 and AT2, are computed to summarize the t tests results and distinguish the differentially expressed patterns of the sub-network.
