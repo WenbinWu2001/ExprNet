@@ -20,9 +20,10 @@
 #' @export
 #'
 #' @examples
-#' network <- read_graph(here::here("demo/network_info", "network"), format = "edgelist")
-#' data_type1 <- readr::read_csv(here::here("demo/data", paste0("LGG", ".csv")))
-#' data_type2 <- readr::read_csv(here::here("demo/data", paste0("GBM", ".csv")))
+#' library(ExprNet)
+#' network <- network_demo
+#' data_type1 <- data_LGG_demo
+#' data_type2 <- data_GBM_demo
 #'
 #' # compute the t-statistics and percentiles
 #' res <- compute_edge_t_stat(data_type1, data_type2, network, type1_name = "LGG", type2_name = "GBM", save_dir = here::here("demo"))

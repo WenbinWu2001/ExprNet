@@ -37,9 +37,10 @@
 #'
 #'
 #' @examples
-#' network <- read_graph(here::here("demo/network_info/network"), format = "edgelist")
-#' data_type1 <- readr::read_csv(here::here("demo/data", paste0("LGG", ".csv")))
-#' data_type2 <- readr::read_csv(here::here("demo/data", paste0("GBM", ".csv")))
+#' library(ExprNet)
+#' network <- network_demo
+#' data_type1 <- data_LGG_demo
+#' data_type2 <- data_GBM_demo
 #' edge_pair_selected <- c("1-8", "1-15", "2-16", "3-16", "5-10", "5-16", "8-11", "8-13", "8-14", "8-15", "13-15")
 #' save_dir <- here::here("demo")
 #'

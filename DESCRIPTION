@@ -18,6 +18,7 @@ Imports:
     here,
     parallel
 Depends: 
-    igraph
+    igraph,
+    R (>= 2.10)
 Suggests: 
     readr
