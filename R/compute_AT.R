@@ -50,8 +50,7 @@
 #' edge_dist_mat <- res$edge_dist_mat
 #'
 #' # compute the AT's
-#' compute_AT(edge_t_stat = edge_t_stat, edge_dist_mat = edge_dist_mat, network = network, edge_pair_selected = edge_pair_selected,
-#'           save_plot = TRUE, save_dir = save_dir,
+#' compute_AT(edge_t_stat = edge_t_stat, edge_dist_mat = edge_dist_mat, network = network, edge_pair_selected = edge_pair_selected, num_cores = 2,
 #'           subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)", vertex.label.cex = 1, vertex.size = 10, edge.width = 7)
 
 compute_AT <- function(edge_t_stat, edge_dist_mat, network,

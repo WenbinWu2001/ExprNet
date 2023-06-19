@@ -21,8 +21,8 @@
 #' # compute AT's
 #' AT_res <- analysis_ExprNet(data_type1 = data_type1, data_type2 = data_type2, network = network,
 #'                            edge_pair_selected = edge_pair_selected, type1_name = "LGG", type2_name = "GBM",
+#'                            num_cores = 2,
 #'                            subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)",
-#'                            save_edge_res = TRUE, save_plot = TRUE, save_dir = here::here("demo"),
 #'                            vertex.label.cex = 1, vertex.size = 10, edge.width = 7)
 
 analysis_ExprNet <- function(data_type1, data_type2, network,
