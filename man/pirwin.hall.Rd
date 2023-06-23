@@ -9,13 +9,13 @@ pirwin.hall(x, n)
 \arguments{
 \item{x}{A number between 0 and n.}
 
-\item{n}{The number of i.i.d. U(0,1) to sum.}
+\item{n}{The number of i.i.d. U(0,1) to sum. It should be an integer.}
 }
 \value{
 The CDF of the Irwin-Hall(n) at x.
 }
 \description{
-Computes the distribution function of Irwin-Hall with parameter n.
+Computes the distribution function of Irwin-Hall with parameter n. This function is NOT vectorized.
 }
 \examples{
 pirwin.hall(1, 2)

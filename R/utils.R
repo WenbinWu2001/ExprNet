@@ -1,7 +1,7 @@
 #' Distribution function of the Irwin-Hall distribution
-#' @description Computes the distribution function of Irwin-Hall with parameter n.
+#' @description Computes the distribution function of Irwin-Hall with parameter n. This function is NOT vectorized.
 #' @param x A number between 0 and n.
-#' @param n The number of i.i.d. U(0,1) to sum.
+#' @param n The number of i.i.d. U(0,1) to sum. It should be an integer.
 #'
 #' @return The CDF of the Irwin-Hall(n) at x.
 #' @export
@@ -12,7 +12,10 @@
 #' pirwin.hall(2.5, 4)
 
 pirwin.hall <- function(x, n) {
-  k = 0:n
+  if (!is.numeric(x) | !is.numeric(n) | (length(x) != 1) | (length(n) != 1) | (x < 0) | (x > n) | (n%%1 != 0))
+    stop("Invalid inputs.")
+
+  k <- 0:n
   return ( 1/2 + 1/(2*factorial(n)) * sum( (-1)^k * choose(n, k) * sign(x-k) * (x-k)^n ) )
 }
 
