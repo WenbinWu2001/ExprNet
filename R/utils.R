@@ -12,7 +12,7 @@
 #' pirwin.hall(2.5, 4)
 
 pirwin.hall <- function(x, n) {
-  if (!is.numeric(x) | !is.numeric(n) | (length(x) != 1) | (length(n) != 1) | (x < 0) | (x > n) | (n%%1 != 0))
+  if (any(!is.numeric(x) | !is.numeric(n) | (length(x) != 1) | (length(n) != 1) | (x < 0) | (x > n) | (n%%1 != 0)))
     stop("Invalid inputs.")
 
   k <- 0:n
