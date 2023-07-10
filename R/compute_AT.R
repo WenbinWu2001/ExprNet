@@ -123,6 +123,7 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
     cat("Parallel Computing: ", num_cores, " cores registered.\n")
 
     '%dopar%' <- foreach::'%dopar%'
+    perm_idx <- NULL  # accommodate to notes in R CHECK
     AT2_perm <- foreach::foreach(perm_idx = 1:num_perm, .combine = 'c') %dopar% {
       AT2_one_perm(perm_idx, edge_t_stat_selected, edge_dist_mat)
     }

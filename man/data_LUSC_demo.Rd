@@ -20,7 +20,7 @@ data_LUSC_demo
 An LUSC normalized gene expression matrix with selected genes.
 }
 \details{
-The demo dataset gives the expression levels of genes which are involved in GO:0006306 (DNA methylation) and GO:0051781 (positive regulation of cell division) and have at least one neighbor on \link[demo network]{network_demo}.
+The demo dataset gives the expression levels of genes which are involved in GO:0006306 (DNA methylation) and GO:0051781 (positive regulation of cell division) and have at least one neighbor on \link{network_demo}.
 Each row corresponds to a gene. Each column corresponds to a sample. The first column are the numeric vertex indices.\cr\cr
 The dataset is the extracted LUSC part of an aggregated dataset of LGG, GBM, LUSC and LUAD datasets on TCGA after quantile normalization.\cr
 LUSC and LUAD are two groups of lung tumors and are usually studied comparatively (as in this demo study).
