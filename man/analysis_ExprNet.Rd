@@ -84,5 +84,6 @@ AT_res <- analysis_ExprNet(data_type1 = data_type1, data_type2 = data_type2, net
                            AT2_perm_test = TRUE, num_perm = 250, num_cores = 2,
                            type1_name = "LGG", type2_name = "GBM",
                            subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)",
+                           save_dir = tempdir(),
                            vertex.label.cex = 1, vertex.size = 10, edge.width = 7)
 }

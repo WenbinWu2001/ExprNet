@@ -35,7 +35,7 @@ AT2_one_perm <- function(perm_idx, edge_t_stat_selected, edge_dist_mat) {
   t_perc_perm <- ecdf(t_stat_perm)(t_stat_perm)  # percentile of each t-statistic among ALL t-statistic
 
   names(t_stat_perm) <- names(t_perc_perm) <- colnames(edge_dist_mat[,-1])
-  t_perc_perm_selected <- t_perc_perm[apply(cbind(edge_t_stat_selected$V1, edge_t_stat_selected$V2), 1, paste, collapse = "-")]
+  t_perc_perm_selected <- t_perc_perm[paste(edge_t_stat_selected$V1, edge_t_stat_selected$V2, sep = "-")]
 
   AT2 <- mean(abs(t_perc_perm_selected - 0.5))  # Compute AT2 associated with the permuted label
 

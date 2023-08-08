@@ -156,15 +156,17 @@ analysis_ExprNet(data_type1, data_type2, network,
 #> 17 features
 #> 5 samples for phenotype 1
 #> 5 samples for phenotype 2.
+#> 
 #> Graph imported successfully.
 #> There are 17 vertices and 17 edges in the graph.
 #> 
 #> ---Computing edge length and t statistics---
-#> 3  /  17  Edges Computed 
-#> 6  /  17  Edges Computed 
-#> 10  /  17  Edges Computed 
-#> 13  /  17  Edges Computed 
-#> 17  /  17  Edges Computed 
+#> 3 / 17 Edges Computed
+#> 6 / 17 Edges Computed
+#> 10 / 17 Edges Computed
+#> 13 / 17 Edges Computed
+#> 17 / 17 Edges Computed
+#> 
 #> Among 17 edge distances, 
 #> 4 of them have significant differences at 0.05 level.
 #> 5 of them > 0.
@@ -173,22 +175,22 @@ analysis_ExprNet(data_type1, data_type2, network,
 #> ---Saving results---
 #> Please find results in the subfolder result_ExprNet
 #> 
-#> The subnetwork consists of  11  edges.
+#> The subnetwork consists of 11 edges.
 #> 
 #> ---Computing AT1---
-#> AT1 =  0.67 , pval_AT1 =  0.0529 
+#> AT1 = 0.67, pval_AT1 = 0.0529
 #> 
 #> ---Computing AT2---
 #> The permutation test may take some time, especially for high dimension. Please stay tuned.
-#> Parallel Computing:  8  cores registered.
+#> Parallel Computing: 8 cores registered.
 #> AT2 computed.
-#> AT2 =  0.47 , pval_AT2 =  0
+#> AT2 = 0.47, pval_AT2 = 0
 #> Please find results in the subfolder result_ExprNet
+#> ---Plot saved---
 ```
 
 <img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
 
-    #> ---Plot saved---
     #> $subnet_label
     #> [1] "Demo_GO0006306_DNA_methylation(LGG-GBM)"
     #> 

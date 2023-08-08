@@ -26,7 +26,7 @@ The input includes data for each phenotype and the network. The user also needs 
 ### Algorithm
 Consider two phenotypes A and B. Denote $V_i^X$ as the expression value of vertex $i$ in phenotype $X$, where $X \in \{A, B\}$. Let $E_{ij}^X := V_i^X - V_j^X$ be the difference in the expression values of $V_i$ and $V_j$ in phenotype $X$, given that $\textit{Vertex}\ i$ and $\textit{Vertex}\ j$ are connected on the network. Let $n$ be the total number of edges on the network. We treat $E_{ij}^A$ and $E_{ij}^B$ as expression levels of the interactions between $\textit{Vertex}\ i$ and $\textit{Vertex}\ j$ (namely the length of this edge) respectively if they are connected.
 
-The overall procedure breaks into four steps:
+The overall procedure breaks into four steps: 
 
 1. Compute $E_{ij}^A$ and $E_{ij}^B$ for all connected edges on the network using samples of phenotypes $A$ and $B$ respectively.
 

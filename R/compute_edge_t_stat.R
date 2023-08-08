@@ -26,7 +26,8 @@
 #' data_type2 <- data_GBM_demo
 #'
 #' # compute the t-statistics and percentiles
-#' res <- compute_edge_t_stat(data_type1, data_type2, network, type1_name = "LGG", type2_name = "GBM")
+#' res <- compute_edge_t_stat(data_type1, data_type2, network,
+#'                            type1_name = "LGG", type2_name = "GBM", save_dir = tempdir())
 #' res
 
 compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "Type1", type2_name = "Type2",
@@ -40,14 +41,14 @@ compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "T
 
   num_type1 <- dim(data_type1[,-1])[2]  # number of type 1 samples (The first column is vertex index)
   num_type2 <- dim(data_type2[,-1])[2]  # number of type 2 samples (The first column is vertex index)
-  cat(paste0("\nData read successfully.\n",
+  message(paste0("\nData read successfully.\n",
              dim(data_type1[,-1])[1], " features\n",
              num_type1, " samples for phenotype 1\n",
-             num_type2, " samples for phenotype 2.\n"))
+             num_type2, " samples for phenotype 2."))
   sample_label <- c(rep(1, num_type1), rep(2, num_type2))  # the true sample label (1 for type1, 2 for type2), corresponding to rows in edge_dist_mat
 
-  cat(paste0("Graph imported successfully.\n",
-             "There are ", length(V(network)), " vertices and ", nrow(edge_list), " edges in the graph.\n"))
+  message(paste0("\nGraph imported successfully.\n",
+             "There are ", length(V(network)), " vertices and ", nrow(edge_list), " edges in the graph."))
 
   ## store results as a (#edge x 10) dataframe:
   ## each row corresponds to results of an edge:
@@ -60,7 +61,7 @@ compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "T
                                "diff_in_means", "t_stat", "p_value", "t_stat_perc")
 
 
-  cat("\n---Computing edge length and t statistics---\n")
+  message("\n---Computing edge length and t statistics---")
   ## Store the results in a (#samples in type1 + #samples in type2) x #edges matrix.
   ## Each row gives distances (edge length) for a sample. Each col corresponds to the edge "vertex1-vertex2" of which the distance is computed.
   ## The first col is sample label.
@@ -89,30 +90,30 @@ compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "T
                             mean(samples_type1) - mean(samples_type2), test_res$statistic, test_res$p.value,
                             "NA")  # save results
 
-    if ((i %in% as.integer(nrow(edge_list)/5 * 1:5))) cat(i, " / ", nrow(edge_list), " Edges Computed", "\n")
+    if ((i %in% as.integer(nrow(edge_list)/5 * 1:5))) message(paste0(i, " / ", nrow(edge_list), " Edges Computed"))
   }
 
   edge_t_stat$t_stat_perc <- ecdf(edge_t_stat$t_stat)(edge_t_stat$t_stat)
   edge_dist_mat <- cbind(sample_label, edge_dist_mat)  # Add a leftmost col as sample labels
 
-  cat(paste0("Among ", nrow(edge_list), " edge distances, \n",
+  message(paste0("\nAmong ", nrow(edge_list), " edge distances, \n",
                sum(edge_t_stat$p_value < alpha_t_test), " of them have significant differences at ", alpha_t_test, " level.\n",
                sum(edge_t_stat$diff_in_means > 0), " of them > 0.\n",
                sum(edge_t_stat$diff_in_means < 0), " of them < 0.\n"))
 
   # save results
   if (save_edge_res == TRUE) {
-    cat("\n---Saving results---\n")
-    cat("Please find results in the subfolder result_ExprNet\n")
+    message("\n---Saving results---")
+    message("Please find results in the subfolder result_ExprNet\n")
     if (dir.exists(save_dir) == FALSE) { # save_dir is invalid, prompt warning and save to default directory
       save_dir <- here::here()  # by default
       warning(paste0("Invalid save directory.\nResults are saved under this directory: ", save_dir))
     }
 
-    path <- paste0(save_dir, "/result_ExprNet/")
+    path <- file.path(save_dir, "result_ExprNet")
     dir.create(path)  # create a subfolder result_ExprNet to save results
-    save(edge_dist_mat, file = paste0(path, type1_name, "_", type2_name, "_edge_distances.Rdata"))
-    save(edge_t_stat, file = paste0(path, type1_name, "_", type2_name, "_edge_t_stat.Rdata"))
+    save(edge_dist_mat, file = file.path(path, paste0(type1_name, "_", type2_name, "_edge_distances.Rdata")))
+    save(edge_t_stat, file = file.path(path, paste0(type1_name, "_", type2_name, "_edge_t_stat.Rdata")))
   }
 
   return (list(edge_t_stat = edge_t_stat, edge_dist_mat = edge_dist_mat))

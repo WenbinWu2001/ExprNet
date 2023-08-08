@@ -43,7 +43,7 @@
 #' data_type2 <- data_GBM_demo
 #' edge_pair_selected <- c("1-8", "1-15", "2-16", "3-16", "5-10",
 #'                         "5-16", "8-11", "8-13", "8-14", "8-15", "13-15")
-#' save_dir <- here::here("demo")
+#' save_dir <- tempdir()
 #'
 #' # compute the t-statistics and percentiles
 #' res <- compute_edge_t_stat(data_type1, data_type2, network,
@@ -55,7 +55,7 @@
 #' compute_AT(edge_t_stat = edge_t_stat, edge_dist_mat = edge_dist_mat, network = network,
 #'            edge_pair_selected = edge_pair_selected,
 #'            AT2_perm_test = TRUE, num_perm = 250, num_cores = 2,
-#'            subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)",
+#'            subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)", save_dir = save_dir,
 #'            vertex.label.cex = 1, vertex.size = 10, edge.width = 7)
 
 compute_AT <- function(edge_t_stat, edge_dist_mat, network,
@@ -74,7 +74,7 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
   if (!is.null(edge_pair_selected)) {
     # select specified edges only
     if (!is.null(vertex_idx_selected)) warning("The sub-network is specified by edge_pair_selected (overriding vertex_idx_selected)")
-    avail_edges <- apply(cbind(edge_t_stat$V1, edge_t_stat$V2), 1, paste, collapse = "-")
+    avail_edges <- paste(edge_t_stat$V1, edge_t_stat$V2, sep = "-")
     row_selector <- (avail_edges %in% edge_pair_selected)
   }
   if (is.null(vertex_idx_selected) & is.null(edge_pair_selected)) {
@@ -89,11 +89,11 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
   edge_t_stat_selected <- edge_t_stat[row_selector, c("V1", "V2", "t_stat", "t_stat_perc")]  # select edges b/w ONLY selected genes
 
   num_edges <- nrow(edge_t_stat_selected)
-  cat("\nThe subnetwork consists of ", num_edges, " edges.\n")
+  message("\nThe subnetwork consists of ", num_edges, " edges.\n")
 
 
   ### Compute AT1 ###
-  cat("\n---Computing AT1---\n")
+  message("\n---Computing AT1---\n")
   AT1 <- ifelse(num_edges >= 1, 1 - mean(edge_t_stat_selected$t_stat_perc), NA)
   # if (is.na(AT1) | (num_edges < 4)) return (NULL)  # not sufficient edges
   if (is.na(AT1)) {
@@ -108,10 +108,10 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
     cdf <- pnorm(num_edges*(1-AT1), mean = num_edges/2, sd = sqrt(num_edges/12))  # if num_edges is large, approximated by N(num_edges/2, num_edges/12)
   }
   pval_AT1 <- 2*min(cdf, 1-cdf)
-  cat("AT1 = ", round(AT1, 2), ", pval_AT1 = ", round(pval_AT1, 4), "\n")
+  message(paste0("AT1 = ", round(AT1, 2), ", pval_AT1 = ", round(pval_AT1, 4), "\n"))
 
   ### Compute AT2 ###
-  cat("\n---Computing AT2---\n")
+  message("\n---Computing AT2---\n")
   AT2 <- ifelse(num_edges >= 1, mean(abs(edge_t_stat_selected$t_stat_perc - 0.5)), NA)
   if (is.na(AT2)) {
     warnings("AT2 is NA. Please check selection of edges.\n")
@@ -121,11 +121,11 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
   # Compute p-value for AT2 (Permutation test)
   pval_AT2 <- NA
   if (AT2_perm_test == TRUE) {  # permutation test for AT2
-    cat("The permutation test may take some time, especially for high dimension. Please stay tuned.\n")
+    message("The permutation test may take some time, especially for high dimension. Please stay tuned.\n")
 
     num_cores <- ifelse(num_cores <= parallel::detectCores(), num_cores, parallel::detectCores())
     doParallel::registerDoParallel(num_cores)  # parallel computing
-    cat("Parallel Computing: ", num_cores, " cores registered.\n")
+    message("Parallel Computing: ", num_cores, " cores registered.\n")
 
     '%dopar%' <- foreach::'%dopar%'
     perm_idx <- NULL  # accommodate to notes in R CHECK
@@ -136,7 +136,7 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
 
     pval_AT2 <- min(mean(AT2_perm <= AT2, na.rm = TRUE), mean(AT2_perm >= AT2, na.rm = TRUE))
   }
-  cat("AT2 computed.\nAT2 = ", round(AT2, 2), ", pval_AT2 = ", round(pval_AT2, 4), "\n")
+  message("AT2 computed.\nAT2 = ", round(AT2, 2), ", pval_AT2 = ", round(pval_AT2, 4), "\n")
 
 
   # Plot the subnetwork
@@ -175,15 +175,15 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
 
   # Save the plot
   if (save_plot == TRUE) {
-    cat("Please find results in the subfolder result_ExprNet")
+    message("Please find results in the subfolder result_ExprNet")
     if (dir.exists(save_dir) == FALSE) { # save_dir is invalid, prompt warning and save to default directory
       save_dir <- here::here()  # by default
       warning(paste0("Invalid save directory.\nResults are saved under this directory: ", save_dir))
     }
 
-    path <- paste0(save_dir, "/result_ExprNet/")
+    path <- file.path(save_dir, "result_ExprNet")
     dir.create(path) # create a subfolder result_ExprNet to save results
-    pdf(paste0(path, "AT1_", subnet_label, "-", type1_name, "_", type2_name, ".pdf"))
+    pdf(file.path(path, paste0("AT1_", subnet_label, "-", type1_name, "_", type2_name, ".pdf")))
 
     plot(subgraph, main = paste0(subnet_label),
          sub = paste0("AT1 = ", round(AT1, 2), ", pval_AT1 = ", round(pval_AT1, 4), "\n",
@@ -193,7 +193,7 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
          vertex.label.cex = 0.5, vertex.size = 3, edge.width = 0.5)  # default plot parameters
 
     dev.off()
-    cat("---Plot saved---\n")
+    message("---Plot saved---\n")
   }
 
   return (list(subnet_label = subnet_label, num_edges = num_edges,

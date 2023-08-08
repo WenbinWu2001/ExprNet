@@ -74,7 +74,7 @@ data_type1 <- data_LGG_demo
 data_type2 <- data_GBM_demo
 edge_pair_selected <- c("1-8", "1-15", "2-16", "3-16", "5-10",
                         "5-16", "8-11", "8-13", "8-14", "8-15", "13-15")
-save_dir <- here::here("demo")
+save_dir <- tempdir()
 
 # compute the t-statistics and percentiles
 res <- compute_edge_t_stat(data_type1, data_type2, network,
@@ -86,6 +86,6 @@ edge_dist_mat <- res$edge_dist_mat
 compute_AT(edge_t_stat = edge_t_stat, edge_dist_mat = edge_dist_mat, network = network,
            edge_pair_selected = edge_pair_selected,
            AT2_perm_test = TRUE, num_perm = 250, num_cores = 2,
-           subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)",
+           subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)", save_dir = save_dir,
            vertex.label.cex = 1, vertex.size = 10, edge.width = 7)
 }
