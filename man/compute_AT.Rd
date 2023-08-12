@@ -33,7 +33,7 @@ compute_AT(
 
 \item{edge_pair_selected}{A character vector of edges that you want to include in the sub-network, each element in the form \emph{"vertex1-vertex2"} (e.g. "1-3").}
 
-\item{AT2_perm_test}{Whether to conduct permutation test for AT2. If \emph{FALSE}, then p-value of AT2 will be returned as NA.}
+\item{AT2_perm_test}{Logical. Whether to conduct permutation test for AT2. If \emph{FALSE}, then p-value of AT2 will be returned as NA.}
 
 \item{num_perm}{Number of permutations in the permutation test.}
 
@@ -45,9 +45,9 @@ compute_AT(
 
 \item{subnet_label}{A label for the sub-network, used for naming the files and setting the title in the plot.}
 
-\item{plot_subnet}{Whether to plot the sub-network.}
+\item{plot_subnet}{Logical. Whether to plot the sub-network.}
 
-\item{save_plot}{Whether to save the sub-network.}
+\item{save_plot}{Logical. Whether to save the plot of the sub-network.}
 
 \item{save_dir}{Directory to save the results. Results are saved in a subfolder \emph{result_ExprNet} will be created under the directory.}
 

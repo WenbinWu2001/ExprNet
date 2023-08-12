@@ -38,7 +38,7 @@ Each column corresponds to a sample. The first column are the numeric vertex ind
 
 \item{alpha_t_test}{Significance level of the t test for each edge. It does not affect the computation of AT1 and AT2.}
 
-\item{AT2_perm_test}{Whether to conduct permutation test for AT2. If \emph{FALSE}, then p-value of AT2 will be returned as NA.}
+\item{AT2_perm_test}{Logical. Whether to conduct permutation test for AT2. If \emph{FALSE}, then p-value of AT2 will be returned as NA.}
 
 \item{num_perm}{Number of permutations in the permutation test.}
 
@@ -50,11 +50,11 @@ Each column corresponds to a sample. The first column are the numeric vertex ind
 
 \item{subnet_label}{A label for the sub-network, used for naming the files and setting the title in the plot.}
 
-\item{plot_subnet}{Whether to plot the sub-network.}
+\item{plot_subnet}{Logical. Whether to plot the sub-network.}
 
-\item{save_edge_res}{Logical. Should the results be saved?}
+\item{save_edge_res}{Logical. Whether the results should be saved. Set to TRUE if you plan to conduct analysis on the t statistics of the edges.}
 
-\item{save_plot}{Whether to save the sub-network.}
+\item{save_plot}{Logical. Whether to save the plot of the sub-network.}
 
 \item{save_dir}{Directory to save the results. Results are saved in a subfolder \emph{result_ExprNet} will be created under the directory.}
 
@@ -84,6 +84,5 @@ AT_res <- analysis_ExprNet(data_type1 = data_type1, data_type2 = data_type2, net
                            AT2_perm_test = TRUE, num_perm = 250, num_cores = 2,
                            type1_name = "LGG", type2_name = "GBM",
                            subnet_label = "Demo_GO0006306_DNA_methylation(LGG-GBM)",
-                           save_dir = tempdir(),
                            vertex.label.cex = 1, vertex.size = 10, edge.width = 7)
 }

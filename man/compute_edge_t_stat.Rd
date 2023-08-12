@@ -29,7 +29,7 @@ Each column corresponds to a sample. The first column are the numeric vertex ind
 
 \item{alpha_t_test}{Significance level of the t test for each edge. It does not affect the computation of AT1 and AT2.}
 
-\item{save_edge_res}{Logical. Should the results be saved?}
+\item{save_edge_res}{Logical. Whether the results should be saved. Set to TRUE if you plan to conduct analysis on the t statistics of the edges.}
 
 \item{save_dir}{Directory to save the results. Results are saved in a subfolder \emph{result_ExprNet} will be created under the directory.}
 }
@@ -50,7 +50,6 @@ data_type1 <- data_LGG_demo
 data_type2 <- data_GBM_demo
 
 # compute the t-statistics and percentiles
-res <- compute_edge_t_stat(data_type1, data_type2, network,
-                           type1_name = "LGG", type2_name = "GBM", save_dir = tempdir())
+res <- compute_edge_t_stat(data_type1, data_type2, network, type1_name = "LGG", type2_name = "GBM")
 res
 }

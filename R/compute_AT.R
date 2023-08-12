@@ -10,12 +10,12 @@
 #' @param edge_dist_mat The result from [compute_edge_t_stat()].
 #' @param vertex_idx_selected A numeric vector of vertex indices that you want to include in the sub-network. All edges on the network between these vertices will be included.
 #' @param edge_pair_selected A character vector of edges that you want to include in the sub-network, each element in the form *"vertex1-vertex2"* (e.g. "1-3").
-#' @param AT2_perm_test Whether to conduct permutation test for AT2. If *FALSE*, then p-value of AT2 will be returned as NA.
+#' @param AT2_perm_test Logical. Whether to conduct permutation test for AT2. If *FALSE*, then p-value of AT2 will be returned as NA.
 #' @param num_perm Number of permutations in the permutation test.
 #' @param num_cores Number of cores to register for parallel computing in permutation test. Should be no larger than the number of available cores on the computer.
 #' @param subnet_label A label for the sub-network, used for naming the files and setting the title in the plot.
-#' @param plot_subnet Whether to plot the sub-network.
-#' @param save_plot Whether to save the sub-network.
+#' @param plot_subnet Logical. Whether to plot the sub-network.
+#' @param save_plot Logical. Whether to save the plot of the sub-network.
 #' @param ... Parameters for plots. For example, you may specify the size for the vertices and width for the edges.
 #'
 #' @return A list of the following: \cr

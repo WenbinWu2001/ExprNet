@@ -9,7 +9,7 @@
 #' @param type1_name The name for phenotype 1, used for naming files of the results.
 #' @param type2_name The name for phenotype 2.
 #' @param alpha_t_test Significance level of the t test for each edge. It does not affect the computation of AT1 and AT2.
-#' @param save_edge_res Logical. Should the results be saved?
+#' @param save_edge_res Logical. Whether the results should be saved. Set to TRUE if you plan to conduct analysis on the t statistics of the edges.
 #' @param save_dir Directory to save the results. Results are saved in a subfolder *result_ExprNet* will be created under the directory.
 #'
 #' @return A list consisting of *edge_t_stat* and *edge_dist_mat*.
@@ -26,8 +26,7 @@
 #' data_type2 <- data_GBM_demo
 #'
 #' # compute the t-statistics and percentiles
-#' res <- compute_edge_t_stat(data_type1, data_type2, network,
-#'                            type1_name = "LGG", type2_name = "GBM", save_dir = tempdir())
+#' res <- compute_edge_t_stat(data_type1, data_type2, network, type1_name = "LGG", type2_name = "GBM")
 #' res
 
 compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "Type1", type2_name = "Type2",
