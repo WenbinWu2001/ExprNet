@@ -75,12 +75,19 @@ large network and sample data.
 
 ## Installation
 
-You can install the development version of ExprNet from
-[GitHub](https://github.com/) with:
+You can install ExprNet 1.0 from [the CRAN
+Repository](https://cran.r-project.org) with:
+
+``` r
+if (!require(ExprNet)) install.packages("ExprNet")
+```
+
+You may also install ExprNet 1.0 from [GitHub](https://github.com/)
+with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("WenbinWu2001/ExprNet")
+# devtools::install_github("WenbinWu2001/ExprNet")
 ```
 
 ## Example
