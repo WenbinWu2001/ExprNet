@@ -1,7 +1,7 @@
 Package: ExprNet
 Type: Package
 Title: Characterizing Differential Expression of Selected Edges on a Network
-Version: 1.0.0
+Version: 1.1.0
 Authors@R: c(
     person("Wenbin", "Wu", email = "drkwu999@gmail.com", role = c("aut", "cre")),
     person("Leqi", "Tian", role = "ctb"))
