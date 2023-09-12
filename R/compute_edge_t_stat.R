@@ -81,8 +81,8 @@ compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "T
     edge_dist_mat[sample_label == 2, vertex_pair] <- samples_type2
 
     test_res <- t.test(x = samples_type1, y = samples_type2,
-                       alternative = "two.sided", mu = 0, paired = FALSE, var.equal = FALSE,
-                       conf.level = 1-alpha_t_test)  # two-sided two sample t test
+                       alternative = "two.sided", mu = 0,
+                       conf.level = 1-alpha_t_test)  # two-sided two sample t test, paired = FALSE, var.equal = FALSE
 
     edge_t_stat[i, ] <- c(vertex1, vertex2,
                             mean(samples_type1), mean(samples_type2), sd(samples_type1), sd(samples_type2),
