@@ -129,7 +129,7 @@ plot(network, edge.width = 3)
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
-We now read the data of LGG and GBM, which has been normalized in
+We then read the data of LGG and GBM, which has been normalized in
 advance. Each row corresponds to a vertex gene, while each column
 corresponds to a sample. The first column is the numeric vertex index.
 
@@ -148,8 +148,8 @@ head(data_type1)
 #> 6     6  2.51  1.72  2.22  2.51  2.83
 ```
 
-Now we compute the defined AT1 and AT2 statistics, save the results and
-plot the sub-network with selected edges only.
+Finally, we compute the defined AT1 and AT2 statistics, save the results
+and plot the sub-network with selected edges only.
 
 ``` r
 analysis_ExprNet(data_type1, data_type2, network,
@@ -173,6 +173,7 @@ analysis_ExprNet(data_type1, data_type2, network,
 #> 10 / 17 Edges Computed
 #> 13 / 17 Edges Computed
 #> 17 / 17 Edges Computed
+#> labels_temp 1 1 1 1 1 2 2 2 2 2
 #> 
 #> Among 17 edge distances, 
 #> 4 of them have significant differences at 0.05 level.
@@ -185,13 +186,13 @@ analysis_ExprNet(data_type1, data_type2, network,
 #> The subnetwork consists of 11 edges.
 #> 
 #> ---Computing AT1---
-#> AT1 = 0.67, pval_AT1 = 0.0529
+#> AT1 = 0.5, pval_AT1 = 0.9755
 #> 
 #> ---Computing AT2---
 #> The permutation test may take some time, especially for high dimension. Please stay tuned.
 #> Parallel Computing: 8 cores registered.
 #> AT2 computed.
-#> AT2 = 0.47, pval_AT2 = 0
+#> AT2 = 0.32, pval_AT2 = 0.038
 #> Please find results in the subfolder result_ExprNet
 #> ---Plot saved---
 ```
@@ -212,23 +213,21 @@ analysis_ExprNet(data_type1, data_type2, network,
     #> [10] "8-15"  "13-15"
     #> 
     #> $t_stat
-    #>  [1] "2.32077365191761"   "0.586623415886203"  "-1.74399941037296" 
-    #>  [4] "-3.02498017335084"  "-2.10689831544308"  "0.327059740937537" 
-    #>  [7] "-2.81959795568343"  "-1.00712074968105"  "-0.289904126578791"
-    #> [10] "1.74407437581549"   "-2.50230299711317" 
+    #>  [1]  2.3207737  0.5866234 -1.7439994 -3.0249802 -2.1068983  0.3270597
+    #>  [7] -2.8195980 -1.0071207 -0.2899041  1.7440744 -2.5023030
     #> 
     #> $t_stat_perc
-    #>  [1] 1.0000000 0.8823529 0.0000000 0.0000000 0.0000000 0.8235294 0.0000000
-    #>  [8] 0.0000000 0.0000000 0.9411765 0.0000000
+    #>  [1] 1.00000000 0.88235294 0.29411765 0.05882353 0.23529412 0.82352941
+    #>  [7] 0.11764706 0.35294118 0.64705882 0.94117647 0.17647059
     #> 
     #> $AT1
-    #> [1] 0.6684492
+    #> [1] 0.4973262
     #> 
     #> $pval_AT1
-    #> [1] 0.05294933
+    #> [1] 0.9754932
     #> 
     #> $AT2
-    #> [1] 0.4679144
+    #> [1] 0.3235294
     #> 
     #> $pval_AT2
-    #> [1] 0
+    #> [1] 0.038

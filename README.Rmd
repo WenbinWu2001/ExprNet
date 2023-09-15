@@ -81,14 +81,14 @@ E(network)$color[!(E(network) %in% selected_edges)] <- "grey"
 plot(network, edge.width = 3)
 ```
 
-We now read the data of LGG and GBM, which has been normalized in advance. Each row corresponds to a vertex gene, while each column corresponds to a sample. The first column is the numeric vertex index.
+We then read the data of LGG and GBM, which has been normalized in advance. Each row corresponds to a vertex gene, while each column corresponds to a sample. The first column is the numeric vertex index.
 ```{r, warning=FALSE, message=FALSE}
 data_type1 <- readr::read_csv(here::here("demo/data", paste0("LGG", ".csv")), show_col_types = FALSE)
 data_type2 <- readr::read_csv(here::here("demo/data", paste0("GBM", ".csv")), show_col_types = FALSE)
 head(data_type1)
 ```
 
-Now we compute the defined AT1 and AT2 statistics, save the results and plot the sub-network with selected edges only. 
+Finally, we compute the defined AT1 and AT2 statistics, save the results and plot the sub-network with selected edges only. 
 ```{r, warning=FALSE}
 analysis_ExprNet(data_type1, data_type2, network,
                  edge_pair_selected = edge_pair_selected,

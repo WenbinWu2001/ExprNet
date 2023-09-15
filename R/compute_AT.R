@@ -62,7 +62,8 @@ compute_AT <- function(edge_t_stat, edge_dist_mat, network,
                        vertex_idx_selected = NULL, edge_pair_selected = NULL,
                        AT2_perm_test = TRUE, num_perm = 500, num_cores = parallel::detectCores(),
                        type1_name = "Type1", type2_name = "Type2",
-                       subnet_label = "subnet", plot_subnet = TRUE, save_plot = FALSE, save_dir = here::here(), ...) {
+                       subnet_label = "subnet", plot_subnet = TRUE,
+                       save_plot = FALSE, save_dir = here::here(), ...) {
 
   ## This function computes AT1, AT2 and its p-value and optionally plots the sub-network and saves it. ##
   network <- as.undirected(network, mode = "collapse")

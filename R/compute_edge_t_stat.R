@@ -44,7 +44,6 @@ compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "T
              dim(data_type1[,-1])[1], " features\n",
              num_type1, " samples for phenotype 1\n",
              num_type2, " samples for phenotype 2."))
-  sample_label <- c(rep(1, num_type1), rep(2, num_type2))  # the true sample label (1 for type1, 2 for type2), corresponding to rows in edge_dist_mat
 
   message(paste0("\nGraph imported successfully.\n",
              "There are ", length(V(network)), " vertices and ", nrow(edge_list), " edges in the graph."))
@@ -64,7 +63,7 @@ compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "T
   ## Store the results in a (#samples in type1 + #samples in type2) x #edges matrix.
   ## Each row gives distances (edge length) for a sample. Each col corresponds to the edge "vertex1-vertex2" of which the distance is computed.
   ## The first col is sample label.
-  edge_dist_mat <- matrix(NA, nrow = num_type1 + num_type2, ncol = dim(edge_list)[1])
+  edge_dist_mat <- matrix(NA, nrow = num_type1 + num_type2, ncol = dim(edge_list)[1])  # each row corresponds to a sample of type1 (upper part of matrix) or type2 (lower part of matrix)
   colnames(edge_dist_mat) <- apply(edge_list, 1, paste, collapse = "-")
 
   for (i in (1:nrow(edge_list))) {
@@ -77,23 +76,32 @@ compute_edge_t_stat <- function(data_type1, data_type2, network, type1_name = "T
     samples_type2 <-
       as.numeric(data_type2[data_type2$vertex_idx == vertex1, -1]) - as.numeric(data_type2[data_type2$vertex_idx == vertex2, -1])
 
-    edge_dist_mat[sample_label == 1, vertex_pair] <- samples_type1
-    edge_dist_mat[sample_label == 2, vertex_pair] <- samples_type2
+    edge_dist_mat[1:num_type1, vertex_pair] <- samples_type1
+    edge_dist_mat[(num_type1+1):(num_type1+num_type2), vertex_pair] <- samples_type2
 
-    test_res <- t.test(x = samples_type1, y = samples_type2,
+    # test_res <- t.test(x = samples_type1, y = samples_type2,
+    #                    alternative = "two.sided", mu = 0,
+    #                    conf.level = 1-alpha_t_test)  # two-sided two sample t test, paired = FALSE, var.equal = FALSE
+
+    ## use formula form in t.test
+    samples_temp <- c(samples_type1, samples_type2)  # combine together to use t.test() with formula
+    labels_temp <- factor(c(rep(type1_name, length(samples_type1)), rep(type2_name, length(samples_type2))), levels = c(type1_name, type2_name))  # specify levels with order (to avoid confusion in the order in levels by type names)
+    test_res <- t.test(samples_temp ~ labels_temp,
                        alternative = "two.sided", mu = 0,
                        conf.level = 1-alpha_t_test)  # two-sided two sample t test, paired = FALSE, var.equal = FALSE
 
     edge_t_stat[i, ] <- c(vertex1, vertex2,
                             mean(samples_type1), mean(samples_type2), sd(samples_type1), sd(samples_type2),
                             mean(samples_type1) - mean(samples_type2), test_res$statistic, test_res$p.value,
-                            "NA")  # save results
+                            NA)  # save results
+
 
     if ((i %in% as.integer(nrow(edge_list)/5 * 1:5))) message(paste0(i, " / ", nrow(edge_list), " Edges Computed"))
   }
+  cat("labels_temp", labels_temp)
 
   edge_t_stat$t_stat_perc <- ecdf(edge_t_stat$t_stat)(edge_t_stat$t_stat)
-  edge_dist_mat <- cbind(sample_label, edge_dist_mat)  # Add a leftmost col as sample labels
+  edge_dist_mat <- cbind(c(rep(1, num_type1), rep(2, num_type2)), edge_dist_mat)  # Add a leftmost col as sample labels (1 for type1, 2 for type2)
 
   message(paste0("\nAmong ", nrow(edge_list), " edge distances, \n",
                sum(edge_t_stat$p_value < alpha_t_test), " of them have significant differences at ", alpha_t_test, " level.\n",

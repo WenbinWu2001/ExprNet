@@ -40,7 +40,8 @@ analysis_ExprNet <- function(data_type1, data_type2, network,
                        vertex_idx_selected, edge_pair_selected,
                        AT2_perm_test, num_perm, num_cores,
                        type1_name, type2_name,
-                       subnet_label, plot_subnet, save_plot, save_dir, ...)  # compute AT1 & AT2
+                       subnet_label, plot_subnet,
+                       save_plot, save_dir, ...)  # compute AT1 & AT2
 
   return (AT_res)
 }
