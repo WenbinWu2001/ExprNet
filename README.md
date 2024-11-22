@@ -80,7 +80,7 @@ with:
 
 ``` r
 # install.packages("devtools")
-# devtools::install_github("WenbinWu2001/ExprNet")
+devtools::install_github("WenbinWu2001/ExprNet")
 ```
 
 ## Example
