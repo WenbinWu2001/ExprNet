@@ -75,14 +75,7 @@ large network and sample data.
 
 ## Installation
 
-You can install ExprNet 1.0 from [the CRAN
-Repository](https://cran.r-project.org) with:
-
-``` r
-if (!require(ExprNet)) install.packages("ExprNet")
-```
-
-You may also install ExprNet 1.0 from [GitHub](https://github.com/)
+You can install ExprNet 1.0 from [GitHub](https://github.com/)
 with:
 
 ``` r
